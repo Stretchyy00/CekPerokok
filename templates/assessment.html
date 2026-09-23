@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Assessment - Smoking Checker</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h2>Smoking Assessment</h2>
+            <p>Isi data di bawah dengan jujur</p>
+        </header>
+
+        <form id="assessmentForm" method="post" action="result.html">
+            <h3>Data Utama</h3>
+            <div class="form-group">
+                <label for="age">Umur Sekarang</label>
+                <input type="number" id="age" name="age" required min="1">
+            </div>
+
+            <div class="form-group">
+                <label for="start_age">Mulai Merokok Umur</label>
+                <input type="number" id="start_age" name="start_age" required min="1">
+            </div>
+
+            <div class="form-group">
+                <label for="cigarettes_per_day">Rokok per Hari (batang)</label>
+                <input type="number" id="cigarettes_per_day" name="cigarettes_per_day" required min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="cigarette_type">Jenis Rokok</label>
+                <select id="cigarette_type" name="cigarette_type" required>
+                    <option value="Rokok Konvensional">Rokok Konvensional</option>
+                    <option value="Rokok Elektrik / Vape">Rokok Elektrik / Vape</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Lanjutkan</button>
+        </form>
+    </div>
+    <script src="../static/js/script.js"></script>
+</body>
+</html>
