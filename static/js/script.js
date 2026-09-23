@@ -47,20 +47,32 @@ function renderRiskList(risks) {
     const container = document.getElementById('riskList');
     if (!container) return;
 
-    container.innerHTML = labels.map(item => {
+    labels.forEach((item) => {
         const risk = risks[item.key];
-        return `
-            <div class="risk-item" role="button" tabindex="0" onclick="showInfo('${item.title.replace(/['"]/g, '')}', '${item.info}')">
-                <div style="display: flex; justify-content: space-between;">
-                    <span>${item.title}</span>
-                    <span>Indikator: <strong>${risk.level}</strong></span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill ${risk.class}" style="width: ${risk.bar}%"></div>
-                </div>
+        const row = document.createElement('div');
+        row.className = 'risk-item';
+        row.setAttribute('role', 'button');
+        row.setAttribute('tabindex', '0');
+        row.addEventListener('click', () => showInfo(item.title, item.info));
+        row.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                showInfo(item.title, item.info);
+            }
+        });
+
+        row.innerHTML = `
+            <div style="display: flex; justify-content: space-between;">
+                <span>${item.title}</span>
+                <span>Indikator: <strong>${risk.level}</strong></span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill ${risk.class}" style="width: ${risk.bar}%"></div>
             </div>
         `;
-    }).join('');
+
+        container.appendChild(row);
+    });
 }
 
 function renderResultPage() {
@@ -68,7 +80,12 @@ function renderResultPage() {
     const age = Number(params.get('age') || 0);
     const startAge = Number(params.get('start_age') || 0);
     const perDay = Number(params.get('cigarettes_per_day') || 0);
-    const exerciseFreq = params.get('exercise_freq') || 'jarang';
+    const exerciseFreq = params.get('exercise_frequency') || 'jarang';
+    const cigaretteType = params.get('cigarette_type') || 'Rokok Konvensional';
+    const triedToQuit = params.get('tried_to_quit') || 'Belum';
+    const secondhandExposure = params.get('secondhand_exposure') || 'Tidak Pernah';
+    const smokeTime = params.get('smoke_time') || 'Pagi';
+    const triggers = params.get('triggers') || 'Tidak ada';
 
     if (!age || !startAge || !perDay) {
         document.getElementById('summaryGrid').innerHTML = '<p>Data tidak tersedia. Silakan ulangi proses assessment.</p>';
@@ -85,6 +102,12 @@ function renderResultPage() {
         <div><strong>Mulai:</strong> ${startAge} tahun</div>
         <div><strong>Lama Merokok:</strong> ${duration} tahun</div>
         <div><strong>Konsumsi:</strong> ${perDay} batang/hari</div>
+        <div><strong>Jenis Rokok:</strong> ${cigaretteType}</div>
+        <div><strong>Coba Berhenti:</strong> ${triedToQuit}</div>
+        <div><strong>Olahraga:</strong> ${exerciseFreq}</div>
+        <div><strong>Paparan Asap:</strong> ${secondhandExposure}</div>
+        <div><strong>Waktu Merokok:</strong> ${smokeTime}</div>
+        <div><strong>Pemicu:</strong> ${triggers}</div>
     `;
 
     document.getElementById('monthlyEstimate').innerHTML = `<strong>Bulan:</strong> ~${monthly} batang`;
@@ -102,6 +125,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const age = Number(document.getElementById('age').value);
             const startAge = Number(document.getElementById('start_age').value);
             const perDay = Number(document.getElementById('cigarettes_per_day').value);
+            const cigaretteType = document.getElementById('cigarette_type').value;
+            const triedToQuit = document.getElementById('tried_to_quit').value;
+            const exerciseFrequency = document.getElementById('exercise_frequency').value;
+            const secondhandExposure = document.getElementById('secondhand_exposure').value;
+            const smokeTime = document.getElementById('smoke_time').value;
+            const triggers = document.getElementById('triggers').value.trim() || 'Tidak ada';
 
             if (startAge > age) {
                 alert('Umur mulai merokok tidak boleh lebih besar dari umur sekarang.');
@@ -117,7 +146,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 age,
                 start_age: startAge,
                 cigarettes_per_day: perDay,
-                exercise_freq: 'jarang'
+                cigarette_type: cigaretteType,
+                tried_to_quit: triedToQuit,
+                exercise_frequency: exerciseFrequency,
+                secondhand_exposure: secondhandExposure,
+                smoke_time: smokeTime,
+                triggers
             });
 
             window.location.href = `result.html?${params.toString()}`;
