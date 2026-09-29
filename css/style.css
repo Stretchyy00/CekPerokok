@@ -86,8 +86,16 @@ img { max-width: 100%; height: auto; display: block; }
 .hero-title { font-size: 2.2rem; line-height: 1.15; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; }
 .hero-description { font-size: 1.05rem; color: var(--muted); max-width: 500px; margin-bottom: 1.75rem; }
 .hero-actions { display: flex; flex-direction: column; gap: 0.6rem; align-items: flex-start; }
-.image-wrapper { background: var(--tint); border-radius: 16px; padding: 0.75rem; }
-.image-wrapper img { border-radius: 10px; width: 100%; object-fit: cover; }
+.image-wrapper {
+  width: min(100%, 420px);
+  margin-left: auto;
+  padding: 0.35rem;
+  background: var(--tint);
+  border: 1px solid rgba(20, 108, 108, 0.14);
+  border-radius: 20px;
+  box-shadow: 0 16px 36px rgba(20, 55, 59, 0.1);
+}
+.image-wrapper img { border-radius: 15px; width: 100%; aspect-ratio: 1; object-fit: contain; }
 
 .section-title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1.75rem; }
 
@@ -99,7 +107,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .fact-section { padding: 4rem 0; }
 .fact-grid { display: grid; gap: 2rem; }
-.fact-number { display: block; font-size: 2.2rem; font-weight: 800; color: var(--danger); letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 0.35rem; }
+.fact-number { display: block; font-size: 2.2rem; font-weight: 800; color: var(--primary); letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 0.35rem; }
 .fact-item p { color: var(--muted); font-size: 0.95rem; max-width: 320px; }
 
 .timeline-section { padding: 4rem 0; background: var(--ink); color: #fff; }
@@ -228,4 +236,5 @@ img { max-width: 100%; height: auto; display: block; }
   .hero-section { padding: 2.5rem 0 3rem; }
   .hero-actions .btn { width: 100%; }
   .help-card .btn { width: 100%; }
+  .image-wrapper { margin-inline: auto; }
 }
