@@ -80,23 +80,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const base = years * 2.5 + cigsPerDay * 2;
     const lungRaw = smokeType === 'konvensional' ? base * 1.15 : base * 0.95;
     const clamp = (v) => Math.min(Math.max(Math.round(v), 15), 98);
-    const lung = clamp(lungRaw);
-    const heart = clamp(base * 1.05);
+    // Indikator organ tambahan memakai indeks paparan yang sama sebagai gambaran edukasi,
+    // bukan model risiko klinis atau skor medis tervalidasi.
+    const scores = {
+      lung: clamp(lungRaw),
+      heart: clamp(base * 1.05),
+      brain: clamp(base * 1.0),
+      mouth: clamp(base * 1.05),
+      vessel: clamp(base * 1.1),
+      eye: clamp(base * 0.8),
+      bone: clamp(base * 0.75),
+      kidney: clamp(base * 0.85)
+    };
 
     $('statCigs').textContent = totalCigs.toLocaleString('id-ID');
     $('statMoney').textContent = !isNaN(packPrice) && packPrice > 0 ? formatRupiah((totalCigs / 16) * packPrice) : 'Tidak diisi';
     $('timeLostValue').textContent = formatTime(minutesLost);
-    setIndicator('lungProgressBar', 'lungRiskText', lung);
-    setIndicator('heartProgressBar', 'heartRiskText', heart);
+    Object.entries(scores).forEach(([organ, score]) => {
+      setIndicator(`${organ}ProgressBar`, `${organ}RiskText`, score);
+    });
 
     $('healthInsight').textContent = smokeType === 'konvensional'
       ? `Kamu sudah merokok ${years} tahun. Tar dan karbon monoksida dari pembakaran merusak silia di paru-paru dan membuat pembuluh darah lebih kaku.`
       : `Kamu sudah memakai rokok elektrik ${years} tahun. Memang tidak ada tar dari pembakaran, tapi nikotinnya tetap menyempitkan pembuluh darah dan uapnya bisa mengiritasi saluran napas.`;
 
-    const worst = Math.max(lung, heart);
+    const worst = Math.max(...Object.values(scores));
     $('healthAdvice').textContent = worst >= 65
-      ? 'Sebaiknya periksa ke dokter, terutama kalau sudah batuk lama, sesak, atau nyeri dada. Berhenti sekarang tetap memberi manfaat.'
-      : 'Catatan: Hasil ini merupakan estimasi edukasi berdasarkan data yang kamu masukkan, bukan diagnosis medis. Kondisi kesehatan sebenarnya hanya dapat diketahui melalui pemeriksaan oleh tenaga kesehatan.';
+      ? 'Indikator paparanmu cukup tinggi. Pertimbangkan berkonsultasi dengan tenaga kesehatan, terutama jika ada keluhan. Berhenti merokok tetap memberi manfaat.'
+      : 'Angka ini hanya gambaran edukasi dari pola paparan, bukan diagnosis atau prediksi kondisi tiap organ. Kondisi kesehatan hanya dapat dinilai oleh tenaga kesehatan.';
 
     emptyState.hidden = true;
     resultArea.hidden = false;

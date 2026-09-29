@@ -174,7 +174,10 @@ img { max-width: 100%; height: auto; display: block; }
 .stat-accent { font-size: 1.75rem; color: var(--danger); }
 .stat-note { font-size: 0.78rem; color: var(--muted); }
 
-.indicators-wrapper { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 1.5rem; }
+.indicator-section-title { font-size: 1rem; margin-bottom: 0.25rem; }
+.indicator-disclaimer { color: var(--muted); font-size: 0.82rem; margin-bottom: 1rem; }
+.indicators-wrapper { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.indicator-item { min-width: 0; padding: 0.85rem; background: var(--bg); border-radius: var(--radius); }
 .indicator-header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 1rem; font-size: 0.9rem; margin-bottom: 0.4rem; }
 .indicator-title { font-weight: 600; }
 .indicator-status { font-weight: 700; color: var(--primary); }
@@ -191,6 +194,10 @@ img { max-width: 100%; height: auto; display: block; }
 .health-note h3 { font-size: 0.95rem; margin-bottom: 0.4rem; }
 .health-note p { color: var(--muted); }
 .health-note .advice { margin-top: 0.6rem; color: var(--ink); font-weight: 500; }
+
+@media (max-width: 420px) {
+  .indicators-wrapper { grid-template-columns: 1fr; }
+}
 
 :focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
 
