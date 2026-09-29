@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     bar.style.width = `${score}%`;
     const item = bar.closest('.indicator-item');
     item.dataset.level = level.key;
-    $(textId).textContent = `${level.label} (${score}%)`;
+    $(textId).textContent = `${level.label}`;
   };
 
   const clearInvalid = () => form.querySelectorAll('.invalid').forEach((el) => el.classList.remove('invalid'));
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const fail = (inputId, text) => {
     clearInvalid();
     $(inputId).classList.add('invalid');
-    notify({ icon: 'warning', title: 'Cek lagi isianmu', text }).then(() => $(inputId).focus());
+    notify({ icon: 'warning', title: 'Cek lagi Data Anda', text }).then(() => $(inputId).focus());
   };
 
   form.addEventListener('submit', (e) => {
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const smokeType = $('smokeType').value;
 
     if (isNaN(currentAge)) return fail('currentAge', 'Umur sekarang belum diisi.');
-    if (currentAge < 10 || currentAge > 100) return fail('currentAge', 'Umur harus antara 10 sampai 100 tahun.');
+    if (currentAge < 10 || currentAge > 100) return fail('currentAge', 'Umur harus antara 10 sampai seterusnya.');
     if (isNaN(startAge)) return fail('smokingStartAge', 'Umur mulai merokok belum diisi.');
     if (startAge < 5) return fail('smokingStartAge', 'Umur mulai merokok minimal 5 tahun.');
     if (startAge >= currentAge) return fail('smokingStartAge', 'Umur mulai merokok harus lebih kecil dari umur sekarang.');
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const worst = Math.max(lung, heart);
     $('healthAdvice').textContent = worst >= 65
       ? 'Sebaiknya periksa ke dokter, terutama kalau sudah batuk lama, sesak, atau nyeri dada. Berhenti sekarang tetap memberi manfaat.'
-      : 'Beban masih bisa dikurangi. Makin cepat berhenti, makin besar pemulihan yang didapat tubuh.';
+      : 'Catatan: Hasil ini merupakan estimasi edukasi berdasarkan data yang kamu masukkan, bukan diagnosis medis. Kondisi kesehatan sebenarnya hanya dapat diketahui melalui pemeriksaan oleh tenaga kesehatan.';
 
     emptyState.hidden = true;
     resultArea.hidden = false;

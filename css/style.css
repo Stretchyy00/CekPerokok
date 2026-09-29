@@ -86,7 +86,6 @@ img { max-width: 100%; height: auto; display: block; }
 .hero-title { font-size: 2.2rem; line-height: 1.15; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; }
 .hero-description { font-size: 1.05rem; color: var(--muted); max-width: 500px; margin-bottom: 1.75rem; }
 .hero-actions { display: flex; flex-direction: column; gap: 0.6rem; align-items: flex-start; }
-.action-note { font-size: 0.85rem; color: var(--muted); }
 .image-wrapper { background: var(--tint); border-radius: 16px; padding: 0.75rem; }
 .image-wrapper img { border-radius: 10px; width: 100%; object-fit: cover; }
 
