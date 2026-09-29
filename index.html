@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CekPerokok - Hitung dampak rokokmu</title>
+  <meta name="description" content="Hitung perkiraan jumlah batang, uang, dan umur yang terpakai dari kebiasaan merokok.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-container">
+      <a class="brand-logo">CekPerokok</a>
+      <nav class="site-nav">
+        <a href="#fakta">Fakta</a>
+        <a href="#berhenti">Kalau berhenti</a>
+        <a href="#bantuan">Bantuan</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">Sudah berapa batang yang kamu habiskan?</h1>
+          <p class="hero-description">
+            Masukkan umur, lama merokok, dan jumlah batang per hari. Kamu bisa lihat total batang, uang yang keluar, dan perkiraan beban ke paru-paru dan jantung.
+          </p>
+          <div class="hero-actions">
+            <a href="cek.html" class="btn btn-primary">Mulai cek</a>
+            <span class="action-note">Butuh sekitar 1 menit. Data tidak disimpan.</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <figure class="image-wrapper">
+            <img src="assets/rokok.webp" alt="Bungkus dan batang rokok" width="500" height="400" loading="eager">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-section">
+      <div class="container">
+        <h2 class="section-title">Yang kamu dapat dari alat ini</h2>
+        <div class="info-grid">
+          <div class="info-item">
+            <h3>Total batang</h3>
+            <p>Jumlah rokok yang sudah kamu habiskan sejak pertama kali mencoba.</p>
+          </div>
+          <div class="info-item">
+            <h3>Uang yang keluar</h3>
+            <p>Isi harga per bungkus, lalu lihat berapa rupiah yang sudah terbakar.</p>
+          </div>
+          <div class="info-item">
+            <h3>Beban paru dan jantung</h3>
+            <p>Gambaran kasar dari lama merokok dan jumlah batang harianmu.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fakta" class="fact-section">
+      <div class="container">
+        <h2 class="section-title">Hal yang sering diremehkan</h2>
+        <div class="fact-grid">
+          <div class="fact-item">
+            <strong class="fact-number">7.000+</strong>
+            <p>zat kimia ada di asap rokok. Puluhan di antaranya diketahui memicu kanker.</p>
+          </div>
+          <div class="fact-item">
+            <strong class="fact-number">11 menit</strong>
+            <p>perkiraan umur yang berkurang tiap satu batang, menurut satu studi di Inggris. Angkanya rata-rata, bukan kepastian.</p>
+          </div>
+          <div class="fact-item">
+            <strong class="fact-number">Nikotin</strong>
+            <p>bikin ketagihan. Sulit berhenti itu wajar dan bukan tanda kamu lemah.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="berhenti" class="timeline-section">
+      <div class="container">
+        <h2 class="section-title">Yang terjadi di tubuh setelah berhenti</h2>
+        <ol class="timeline">
+          <li>
+            <span class="time-mark">20 menit</span>
+            <p>Detak jantung dan tekanan darah mulai turun.</p>
+          </li>
+          <li>
+            <span class="time-mark">12 jam</span>
+            <p>Kadar karbon monoksida di darah kembali normal.</p>
+          </li>
+          <li>
+            <span class="time-mark">2 minggu sampai 3 bulan</span>
+            <p>Peredaran darah dan fungsi paru membaik.</p>
+          </li>
+          <li>
+            <span class="time-mark">1 tahun</span>
+            <p>Risiko penyakit jantung koroner turun sekitar setengah dari perokok aktif.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="bantuan" class="help-section">
+      <div class="container">
+        <div class="help-card">
+          <div>
+            <h2>Mau kurangi atau berhenti?</h2>
+            <ul class="help-list">
+              <li>Tentukan tanggal berhenti dan kasih tahu satu orang terdekat.</li>
+              <li>Buang korek, asbak, dan sisa rokok di rumah.</li>
+              <li>Kenali jam-jam paling sering ingin merokok, lalu siapkan pengganti seperti jalan kaki atau minum air.</li>
+              <li>Kalau kambuh, mulai lagi besoknya. Satu batang tidak menghapus usahamu.</li>
+            </ul>
+            <p class="help-note">Layanan berhenti merokok Kemenkes: <strong>0800-177-6565</strong> (bebas pulsa).</p>
+          </div>
+          <a href="cek.html" class="btn btn-primary">Cek dulu datamu</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <p>&copy; 2026 CekPerokok. Hasil di sini perkiraan, bukan diagnosis. Untuk keluhan kesehatan, temui dokter.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

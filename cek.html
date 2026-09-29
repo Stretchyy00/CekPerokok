@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cek Rokok - Form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">CekPerokok</a>
+      <a href="index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        Kembali
+      </a>
+    </div>
+  </header>
+
+  <main class="cek-main">
+    <div class="container">
+      <div class="page-head">
+        <h1>Hitung kebiasaanmu</h1>
+        <p>Jawab sejujurnya supaya hasilnya mendekati kenyataan.</p>
+      </div>
+
+      <div class="cek-layout">
+        <section class="panel">
+          <form id="calculatorForm" class="checker-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="currentAge">Umur sekarang</label>
+                <div class="input-unit">
+                  <input type="number" id="currentAge" min="10" max="100" inputmode="numeric" placeholder="24" required>
+                  <span>tahun</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="smokingStartAge">Mulai merokok umur</label>
+                <div class="input-unit">
+                  <input type="number" id="smokingStartAge" min="5" max="100" inputmode="numeric" placeholder="18" required>
+                  <span>tahun</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cigsPerDay">Rokok per hari</label>
+              <div class="input-unit">
+                <input type="number" id="cigsPerDay" min="1" max="120" inputmode="numeric" placeholder="16" required>
+                <span>batang</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="packPrice">Harga per bungkus <em>(boleh dikosongkan)</em></label>
+              <div class="input-unit">
+                <span class="prefix">Rp</span>
+                <input type="number" id="packPrice" min="0" inputmode="numeric" placeholder="30000">
+              </div>
+              <small>Dihitung dengan isi 16 batang per bungkus.</small>
+            </div>
+
+            <div class="form-group">
+              <label for="smokeType">Jenis rokok</label>
+              <select id="smokeType">
+                <option value="konvensional">Rokok biasa</option>
+                <option value="elektrik">Rokok elektrik</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">Lihat hasil</button>
+          </form>
+        </section>
+
+        <section class="panel result-panel" aria-live="polite">
+          <div id="emptyState" class="empty-state">
+            <h2>Hasil muncul di sini</h2>
+            <p>Isi form di sebelah, lalu tekan "Lihat hasil".</p>
+          </div>
+
+          <div id="resultArea" class="result-area" hidden>
+            <h2>Hasil hitunganmu</h2>
+
+            <div class="stat-grid">
+              <div class="stat">
+                <span class="stat-label">Total batang</span>
+                <strong id="statCigs" class="stat-value">0</strong>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Uang terbakar</span>
+                <strong id="statMoney" class="stat-value">-</strong>
+              </div>
+              <div class="stat stat-wide">
+                <span class="stat-label">Perkiraan umur berkurang</span>
+                <strong id="timeLostValue" class="stat-value stat-accent">0</strong>
+                <span class="stat-note">Dengan asumsi 1 batang = 11 menit.</span>
+              </div>
+            </div>
+
+            <div class="indicators-wrapper">
+              <div class="indicator-item">
+                <div class="indicator-header">
+                  <span class="indicator-title">Paru-paru</span>
+                  <span id="lungRiskText" class="indicator-status"></span>
+                </div>
+                <div class="progress-bar-track">
+                  <div id="lungProgressBar" class="progress-bar-fill" style="width: 0%;"></div>
+                </div>
+              </div>
+              <div class="indicator-item">
+                <div class="indicator-header">
+                  <span class="indicator-title">Jantung dan pembuluh darah</span>
+                  <span id="heartRiskText" class="indicator-status"></span>
+                </div>
+                <div class="progress-bar-track">
+                  <div id="heartProgressBar" class="progress-bar-fill" style="width: 0%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="health-note">
+              <h3>Artinya apa</h3>
+              <p id="healthInsight"></p>
+              <p id="healthAdvice" class="advice"></p>
+            </div>
+
+            <button type="button" id="btnReset" class="btn btn-secondary">Hitung ulang</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <p>&copy; 2026 CekPerokok. Hasil di sini perkiraan, bukan diagnosis.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
