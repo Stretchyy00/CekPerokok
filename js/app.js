@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const years = currentAge - startAge;
     const totalCigs = years * 365 * cigsPerDay;
-    const minutesLost = totalCigs * 11;
+    const minutesLost = totalCigs * 20;
 
     const base = years * 2.5 + cigsPerDay * 2;
     const lungRaw = smokeType === 'konvensional' ? base * 1.15 : base * 0.95;
